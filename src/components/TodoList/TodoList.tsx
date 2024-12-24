@@ -1,8 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
-import { getTodos } from '../../api';
 import { Todo } from '../../types/Todo';
-import { Loader } from '../Loader';
 import { TodoModal } from '../TodoModal';
 
 type Props = {
@@ -10,7 +8,6 @@ type Props = {
 };
 
 export const TodoList: React.FC<Props> = ({ todos }) => {
-  const [isLoading, setIsLoading] = useState(true);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedTodo, setSelectedTodo] = useState<Todo | null>(null);
@@ -24,16 +21,6 @@ export const TodoList: React.FC<Props> = ({ todos }) => {
     setIsModalOpen(false);
     setSelectedTodo(null);
   };
-
-  useEffect(() => {
-    getTodos().then(() => {
-      setIsLoading(false);
-    });
-  }, []);
-
-  if (isLoading) {
-    return <Loader />;
-  }
 
   return (
     <>
@@ -79,7 +66,9 @@ export const TodoList: React.FC<Props> = ({ todos }) => {
                   onClick={() => handleOpenModal(todo)}
                 >
                   <span className="icon">
-                    <i className={`far ${todo.id === selectedTodo?.id ? 'fa-eye-slash' : 'fa-eye'}`} />
+                    <i
+                      className={`far ${todo.id === selectedTodo?.id ? 'fa-eye-slash' : 'fa-eye'}`}
+                    />
                   </span>
                 </button>
               </td>

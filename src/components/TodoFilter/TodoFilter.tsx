@@ -4,14 +4,14 @@ type Props = {
   status: string;
   query: string;
   onStatusChange: (value: string) => void;
-  onQuerryChange: (value: string) => void;
+  onQueryChange : (value: string) => void;
 };
 
 export const TodoFilter: React.FC<Props> = ({
   status,
   query,
   onStatusChange,
-  onQuerryChange,
+  onQueryChange ,
 }) => {
   return (
     <form className="field has-addons">
@@ -36,7 +36,7 @@ export const TodoFilter: React.FC<Props> = ({
           className="input"
           placeholder="Search..."
           value={query}
-          onChange={e => onQuerryChange(e.target.value)}
+          onChange={e => onQueryChange(e.target.value)}
         />
         {query.length !== 0 ? (
           <span className="icon is-left">
@@ -51,7 +51,7 @@ export const TodoFilter: React.FC<Props> = ({
               data-cy="clearSearchButton"
               type="button"
               className="delete"
-              onClick={() => onQuerryChange('')}
+              onClick={() => onQueryChange('')}
             />
           ) : null}
         </span>

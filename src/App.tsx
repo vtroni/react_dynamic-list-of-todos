@@ -54,7 +54,7 @@ export const App: React.FC = () => {
                 status={status}
                 onStatusChange={setStatus}
                 query={query}
-                onQuerryChange={setQuery}
+                onQueryChange={setQuery}
               />
             </div>
 
